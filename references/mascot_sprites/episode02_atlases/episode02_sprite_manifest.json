@@ -1,0 +1,461 @@
+{
+  "note": "Normalized 7x10 atlases derived from the supplied artwork. Dixon's final atlas row is transparent padding because the source has 7x9 cells.",
+  "characters": {
+    "Cila": {
+      "source": "references/mascot_sprites/Purrcilla_MAALTECH_Mascot_Spritesheet.png",
+      "source_sha256": "195e4ee4d57ebf45c6f2c05825b60c4e78be5b0b3955591e5a49ab71f4ea7121",
+      "source_size": [
+        1027,
+        1532
+      ],
+      "source_alpha_range": [
+        0,
+        255
+      ],
+      "source_grid": {
+        "columns": 7,
+        "rows": 10,
+        "frames": 70
+      },
+      "source_row_edges": [
+        0,
+        160,
+        312,
+        465,
+        615,
+        767,
+        924,
+        1079,
+        1235,
+        1386,
+        1532
+      ],
+      "source_column_edges_by_row": [
+        [
+          0,
+          147,
+          293,
+          440,
+          587,
+          734,
+          880,
+          1027
+        ],
+        [
+          0,
+          143,
+          293,
+          439,
+          582,
+          727,
+          880,
+          1027
+        ],
+        [
+          0,
+          147,
+          296,
+          449,
+          565,
+          725,
+          874,
+          1027
+        ],
+        [
+          0,
+          147,
+          293,
+          440,
+          587,
+          734,
+          880,
+          1027
+        ],
+        [
+          0,
+          146,
+          293,
+          451,
+          587,
+          734,
+          880,
+          1027
+        ],
+        [
+          0,
+          147,
+          293,
+          440,
+          587,
+          734,
+          880,
+          1027
+        ],
+        [
+          0,
+          147,
+          293,
+          440,
+          587,
+          734,
+          880,
+          1027
+        ],
+        [
+          0,
+          147,
+          293,
+          440,
+          587,
+          734,
+          880,
+          1027
+        ],
+        [
+          0,
+          147,
+          293,
+          440,
+          587,
+          734,
+          880,
+          1027
+        ],
+        [
+          0,
+          147,
+          293,
+          440,
+          587,
+          734,
+          880,
+          1027
+        ]
+      ],
+      "atlas": "references/mascot_sprites/episode02_atlases/Cila_EP02_Atlas.png",
+      "atlas_size": [
+        1344,
+        1920
+      ],
+      "atlas_grid": {
+        "columns": 7,
+        "rows": 10,
+        "cell": 192
+      },
+      "valid_frames": 70,
+      "foot_pixel_range": [
+        187,
+        188
+      ],
+      "frame_map": {
+        "idle": 0,
+        "curious": 5,
+        "approach": 17,
+        "investigate": 31,
+        "lap_loaf": 40,
+        "shared_idle": 0
+      }
+    },
+    "Dixon": {
+      "source": "references/mascot_sprites/Dixon_MAALTECH_Mascot_Spritesheet.png",
+      "source_sha256": "0da5d9033e1a0d9e57b15bb9a80673283fa487b811dd006d9a17c3d82986b78f",
+      "source_size": [
+        1027,
+        1531
+      ],
+      "source_alpha_range": [
+        0,
+        255
+      ],
+      "source_grid": {
+        "columns": 7,
+        "rows": 9,
+        "frames": 63
+      },
+      "source_row_edges": [
+        0,
+        172,
+        349,
+        523,
+        700,
+        879,
+        1056,
+        1242,
+        1408,
+        1531
+      ],
+      "source_column_edges_by_row": [
+        [
+          0,
+          147,
+          293,
+          439,
+          586,
+          734,
+          879,
+          1027
+        ],
+        [
+          0,
+          144,
+          290,
+          431,
+          580,
+          729,
+          874,
+          1027
+        ],
+        [
+          0,
+          145,
+          293,
+          436,
+          583,
+          724,
+          874,
+          1027
+        ],
+        [
+          0,
+          147,
+          293,
+          440,
+          587,
+          734,
+          880,
+          1027
+        ],
+        [
+          0,
+          144,
+          293,
+          440,
+          587,
+          734,
+          880,
+          1027
+        ],
+        [
+          0,
+          147,
+          292,
+          440,
+          587,
+          734,
+          880,
+          1027
+        ],
+        [
+          0,
+          141,
+          293,
+          439,
+          587,
+          734,
+          877,
+          1027
+        ],
+        [
+          0,
+          141,
+          293,
+          434,
+          587,
+          734,
+          880,
+          1027
+        ],
+        [
+          0,
+          147,
+          293,
+          440,
+          587,
+          734,
+          880,
+          1027
+        ]
+      ],
+      "atlas": "references/mascot_sprites/episode02_atlases/Dixon_EP02_Atlas.png",
+      "atlas_size": [
+        1344,
+        1920
+      ],
+      "atlas_grid": {
+        "columns": 7,
+        "rows": 10,
+        "cell": 192
+      },
+      "valid_frames": 63,
+      "foot_pixel_range": [
+        173,
+        188
+      ],
+      "frame_map": {
+        "idle": 0,
+        "curious": 3,
+        "observe": 43,
+        "window_report": 6,
+        "look_back": 55,
+        "shared_idle": 0
+      }
+    },
+    "Dage": {
+      "source": "references/mascot_sprites/Dage_MAALTECH_Mascot_Spritesheet.png",
+      "source_sha256": "9872f75acb4c144dd6196d9d12d33e85da392817f962e49b43daf9af07775058",
+      "source_size": [
+        1027,
+        1531
+      ],
+      "source_alpha_range": [
+        0,
+        255
+      ],
+      "source_grid": {
+        "columns": 7,
+        "rows": 10,
+        "frames": 70
+      },
+      "source_row_edges": [
+        0,
+        154,
+        299,
+        445,
+        601,
+        763,
+        922,
+        1081,
+        1239,
+        1394,
+        1531
+      ],
+      "source_column_edges_by_row": [
+        [
+          0,
+          147,
+          293,
+          440,
+          587,
+          734,
+          880,
+          1027
+        ],
+        [
+          0,
+          137,
+          285,
+          428,
+          571,
+          720,
+          864,
+          1027
+        ],
+        [
+          0,
+          152,
+          293,
+          440,
+          587,
+          734,
+          880,
+          1027
+        ],
+        [
+          0,
+          147,
+          293,
+          440,
+          587,
+          724,
+          880,
+          1027
+        ],
+        [
+          0,
+          147,
+          290,
+          440,
+          576,
+          734,
+          880,
+          1027
+        ],
+        [
+          0,
+          147,
+          293,
+          440,
+          588,
+          739,
+          897,
+          1027
+        ],
+        [
+          0,
+          147,
+          293,
+          442,
+          587,
+          734,
+          884,
+          1027
+        ],
+        [
+          0,
+          147,
+          289,
+          420,
+          573,
+          713,
+          862,
+          1027
+        ],
+        [
+          0,
+          150,
+          285,
+          429,
+          579,
+          723,
+          869,
+          1027
+        ],
+        [
+          0,
+          156,
+          299,
+          440,
+          587,
+          734,
+          880,
+          1027
+        ]
+      ],
+      "atlas": "references/mascot_sprites/episode02_atlases/Dage_EP02_Atlas.png",
+      "atlas_size": [
+        1344,
+        1920
+      ],
+      "atlas_grid": {
+        "columns": 7,
+        "rows": 10,
+        "cell": 192
+      },
+      "valid_frames": 70,
+      "foot_pixel_range": [
+        181,
+        188
+      ],
+      "frame_map": {
+        "idle": 0,
+        "curious": 6,
+        "sniff": 37,
+        "paw_test": 3,
+        "enter_box": 11,
+        "curl_in_box": 26,
+        "look_back": 55,
+        "shared_idle": 42
+      }
+    }
+  }
+}

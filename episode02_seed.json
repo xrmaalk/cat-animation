@@ -1,0 +1,16 @@
+{
+  "episode_number": 2,
+  "episode_title": "Dage Discovers Why a Cardboard Box Feels Safe",
+  "episode_seed": "Dage discovers why a cardboard box feels safe.",
+  "audience_fact": "Enclosed spaces can help cats feel protected because they provide predictable boundaries and reduce exposure.",
+  "fact_label": "Enclosed spaces can help cats feel protected.",
+  "optional_narration": "Dage is not hiding from the world. He is choosing a space where the world feels easier to understand.",
+  "lead_character": "Dage",
+  "supporting_characters": ["Dixon", "Cila"],
+  "discovery_prop": "PROP_CardboardBox",
+  "discovery_collection": "SET_BoxStudy",
+  "runtime_seconds": 1020,
+  "fps": 24,
+  "shotlist": "episode02_shotlist.csv",
+  "sprite_manifest": "references/mascot_sprites/episode02_atlases/episode02_sprite_manifest.json"
+}

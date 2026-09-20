@@ -1,3 +1,4 @@
-__pycache__/*
-.catenv
+__pycache__
+.cat-env
 .env*
+renders

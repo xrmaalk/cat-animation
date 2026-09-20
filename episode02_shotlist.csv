@@ -1,0 +1,27 @@
+shot,beat,start_seconds,duration_seconds,camera,description,dage_action,dixon_action,cila_action
+S01,HOME_INTRODUCTION,0,45,CAM_CatEye_A,"Quiet home geography; the box sits open on the carpet",IDLE,IDLE,IDLE
+S02,TITLE,45,15,CAM_CatEye_A,"Title over the open box and unhurried morning",IDLE,IDLE,IDLE
+S03,NAMES_CILA,60,4,CAM_HeroPortrait_Cila,"Cila at the threshold; short curious look",IDLE,IDLE,CURIOUS
+S04,NAMES_DAGE,64,4,CAM_HeroPortrait_Dage,"Dage's white ruff and calm watchful eyes",CURIOUS,IDLE,IDLE
+S05,NAMES_DIXON,68,4,CAM_HeroPortrait_Dixon,"Dixon upright with cream chest and white mittens",IDLE,WINDOW_REPORT,IDLE
+S06,MORNING_GEOGRAPHY,72,36,CAM_CatEye_A,"Show the box's predictable edges in the shared room",IDLE,IDLE,IDLE
+S07,DAGE_NOTICES_BOX,108,24,CAM_CatEye_A,"Dage notices the dark opening and stills",CURIOUS,IDLE,IDLE
+S08,DAGE_APPROACHES,132,24,CAM_CondoPeek,"Dage approaches from the open side in measured steps",ENTER_BOX,IDLE,IDLE
+S09,DAGE_SNIFFS_BOX,156,24,CAM_Insert_Eyes,"Dage checks the rim and the inside air",SNIFF,IDLE,IDLE
+S10,DAGE_PAW_TEST,180,36,CAM_Insert_Paws,"A paw moves the front flap; the edge gives slightly",PAW_TEST,IDLE,IDLE
+S11,BOX_RESPONDS,216,36,CAM_Insert_Paws,"The flap settles; Dage watches the same boundary return",CURIOUS,IDLE,IDLE
+S12,DAGE_ENTERS_BOX,252,42,CAM_CondoPeek,"Dage steps into the box from the open side",ENTER_BOX,IDLE,IDLE
+S13,DAGE_RESTS_INSIDE,294,42,CAM_HeroPortrait_Dage,"Dage lowers into a quiet curl behind the front rim",CURL_IN_BOX,IDLE,IDLE
+S14,DIXON_OBSERVES,336,54,CAM_WindowReport,"Dixon notices Dage from a different angle",CURL_IN_BOX,OBSERVE,IDLE
+S15,DIXON_WINDOW_REPORT,390,48,CAM_HeroPortrait_Dixon,"Dixon looks from the window back to the box",CURL_IN_BOX,WINDOW_REPORT,IDLE
+S16,CILA_APPROACHES,438,42,CAM_PorchWide,"Cila crosses the threshold toward the box",CURL_IN_BOX,OBSERVE,APPROACH
+S17,CILA_INVESTIGATES,480,48,CAM_HeroPortrait_Cila,"Cila checks the outside edge while Dage rests within",CURL_IN_BOX,OBSERVE,INVESTIGATE
+S18,DAGE_EXITS,528,48,CAM_CondoPeek,"Dage steps out; the box remains a place he can choose",ENTER_BOX,OBSERVE,CURIOUS
+S19,DAGE_RETURNS,576,60,CAM_CondoPeek,"Dage returns and settles without hurry",CURL_IN_BOX,OBSERVE,CURIOUS
+S20,FACT_LABEL,636,54,CAM_CatEye_A,"Quiet visual fact: enclosed spaces have predictable boundaries",CURL_IN_BOX,OBSERVE,CURIOUS
+S21,SHARED_QUIET,690,48,CAM_CatEye_A,"All three share the space; protect a slow blink from narration",CURL_IN_BOX,IDLE,LAP_LOAF
+S22,BOX_CALLBACK,738,48,CAM_Insert_Paws,"A small flap movement; Dage stays relaxed",LOOK_BACK,OBSERVE,INVESTIGATE
+S23,RECAP_BOUNDARIES,786,36,CAM_CatEye_A,"The box has edges Dage can see and feel",CURL_IN_BOX,IDLE,IDLE
+S24,RECAP_EXPOSURE,822,36,CAM_CondoPeek,"The opening offers a view with less exposure",CURL_IN_BOX,IDLE,IDLE
+S25,RECAP_CHOICE,858,36,CAM_HeroPortrait_Dage,"Dage chooses the box again",CURL_IN_BOX,IDLE,IDLE
+S26,SHARED_FINAL_FRAME,894,126,CAM_CatEye_A,"Dage in the box; Dixon and Cila nearby in a long quiet hold",CURL_IN_BOX,SHARED_IDLE,SHARED_IDLE
