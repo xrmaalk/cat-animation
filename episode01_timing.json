@@ -1,0 +1,20 @@
+{
+  "series": "Purrcilla, Dixon & Dage: Curious Together",
+  "episode": "The Slats That Make Daylight",
+  "runtime_seconds": 1020,
+  "fps": 24,
+  "beat_sheet": [
+    {"label": "Cold open", "start": 0, "end": 45},
+    {"label": "Title + names", "start": 45, "end": 90},
+    {"label": "Morning geography", "start": 90, "end": 210},
+    {"label": "The notice", "start": 210, "end": 330},
+    {"label": "First investigation", "start": 330, "end": 540},
+    {"label": "Second investigation + fact", "start": 540, "end": 780},
+    {"label": "Shared understanding", "start": 780, "end": 960},
+    {"label": "Recap", "start": 960, "end": 1014},
+    {"label": "Button + end card", "start": 1014, "end": 1020}
+  ],
+  "fact": "Window blinds are made of slats that can tilt to control how much daylight enters.",
+  "narration_default": "off",
+  "shot_count": 26
+}
