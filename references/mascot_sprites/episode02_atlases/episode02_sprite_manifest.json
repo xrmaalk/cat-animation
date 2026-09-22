@@ -1,5 +1,10 @@
 {
   "note": "Normalized 7x10 atlases derived from the supplied artwork. Dixon's final atlas row is transparent padding because the source has 7x9 cells.",
+  "dage_front_neck_patch": "Dage_baked_black_front_neck_fur_v3",
+  "dage_visual_references": [
+    "references/mascot_sprites/Dage_Mascot_Idle.png",
+    "references/mascot_sprites/Dage_Sprite_Sheet.jpg"
+  ],
   "characters": {
     "Cila": {
       "source": "references/mascot_sprites/Purrcilla_MAALTECH_Mascot_Spritesheet.png",
@@ -302,7 +307,7 @@
     },
     "Dage": {
       "source": "references/mascot_sprites/Dage_MAALTECH_Mascot_Spritesheet.png",
-      "source_sha256": "9872f75acb4c144dd6196d9d12d33e85da392817f962e49b43daf9af07775058",
+      "source_sha256": "a6bccfe772ba3d0960ed21a9361eb503c2ee69b18dabf5bd065e52f023fbaf50",
       "source_size": [
         1027,
         1531
@@ -319,14 +324,14 @@
       "source_row_edges": [
         0,
         154,
-        299,
-        445,
+        300,
+        446,
         601,
         763,
         922,
         1081,
-        1239,
-        1394,
+        1240,
+        1391,
         1531
       ],
       "source_column_edges_by_row": [
@@ -337,93 +342,93 @@
           440,
           587,
           734,
-          880,
+          881,
           1027
         ],
         [
           0,
-          137,
-          285,
-          428,
-          571,
-          720,
-          864,
-          1027
-        ],
-        [
-          0,
-          152,
-          293,
-          440,
-          587,
-          734,
-          880,
-          1027
-        ],
-        [
-          0,
-          147,
-          293,
-          440,
-          587,
-          724,
-          880,
-          1027
-        ],
-        [
-          0,
-          147,
-          290,
-          440,
-          576,
-          734,
-          880,
-          1027
-        ],
-        [
-          0,
-          147,
-          293,
-          440,
-          588,
-          739,
-          897,
-          1027
-        ],
-        [
-          0,
-          147,
-          293,
-          442,
-          587,
-          734,
-          884,
-          1027
-        ],
-        [
-          0,
-          147,
-          289,
-          420,
-          573,
-          713,
+          134,
+          282,
+          425,
+          569,
+          718,
           862,
           1027
         ],
         [
           0,
-          150,
-          285,
-          429,
-          579,
-          723,
-          869,
+          153,
+          295,
+          440,
+          587,
+          730,
+          877,
           1027
         ],
         [
           0,
-          156,
-          299,
+          147,
+          293,
+          440,
+          587,
+          722,
+          879,
+          1027
+        ],
+        [
+          0,
+          147,
+          287,
+          440,
+          573,
+          734,
+          880,
+          1027
+        ],
+        [
+          0,
+          147,
+          293,
+          440,
+          590,
+          741,
+          898,
+          1027
+        ],
+        [
+          0,
+          147,
+          293,
+          443,
+          589,
+          734,
+          886,
+          1027
+        ],
+        [
+          0,
+          144,
+          285,
+          416,
+          569,
+          710,
+          857,
+          1027
+        ],
+        [
+          0,
+          154,
+          280,
+          426,
+          576,
+          721,
+          865,
+          1027
+        ],
+        [
+          0,
+          158,
+          302,
           440,
           587,
           734,

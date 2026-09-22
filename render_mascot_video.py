@@ -4,11 +4,13 @@ From the project directory:
   blender --background Purrcilla_Dixon_Dage_Animated_Short_Mascot_Sprites.blend \
     --python render_mascot_video.py
 
-Pass ``-- --sample`` for a 24-frame check, or ``-- --ffmpeg PATH`` if FFmpeg
-is not on PATH. Completed PNG frames are reused when resuming an interrupted
-render. The output is written to a temporary MP4 until encoding succeeds.
+Pass ``-- --sample`` for a 24-frame check, ``-- --overwrite`` to replace an
+earlier MP4, or ``-- --ffmpeg PATH`` if FFmpeg is not on PATH. Completed PNG
+frames are reused when resuming an interrupted render of the same .blend.
+The output is written to a temporary MP4 until encoding succeeds.
 """
 
+from hashlib import sha256
 from pathlib import Path
 import os
 import shutil
@@ -38,15 +40,18 @@ root = Path(__file__).resolve().parent
 output_dir = root / "renders"
 output_dir.mkdir(exist_ok=True)
 sample = "--sample" in sys.argv
-label = "Purrcilla_Dixon_Dage_Mascot_Sprites_sample" if sample else "Purrcilla_Dixon_Dage_Mascot_Sprites"
-frames_dir = output_dir / (label + "_frames")
+scene = bpy.context.scene
+base = ("Purrcilla_Dixon_Dage_Mascot_Sheets"
+        if scene.get("mascot_sprite_version") else "Purrcilla_Dixon_Dage_Mascot_Sprites")
+label = base + ("_sample" if sample else "")
+source_signature = sha256(Path(bpy.data.filepath).read_bytes()).hexdigest()[:12]
+frames_dir = output_dir / (label + "_frames_" + source_signature)
 frames_dir.mkdir(exist_ok=True)
 destination = output_dir / (label + ".mp4")
 temporary = output_dir / (label + ".part.mp4")
-if destination.exists():
-    raise FileExistsError(f"Refusing to overwrite {destination}")
+if destination.exists() and "--overwrite" not in sys.argv:
+    raise FileExistsError(f"Output exists: {destination}; pass -- --overwrite to replace it")
 
-scene = bpy.context.scene
 scene.render.engine = "BLENDER_EEVEE"
 scene.frame_start = 1
 scene.frame_end = 24 if sample else 288

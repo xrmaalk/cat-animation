@@ -8,11 +8,19 @@ import csv
 from hashlib import sha256
 import json
 from pathlib import Path
+import sys
 
 import bpy
 
 
 ROOT = Path(__file__).resolve().parent
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+from dage_neck_patch import (
+    FRONT_NECK_PATCH_CENTERS,
+    mark_version_is_supported,
+)
+
 SEED = json.loads((ROOT / "episode02_seed.json").read_text(encoding="utf-8"))
 MANIFEST = json.loads((ROOT / SEED["sprite_manifest"]).read_text(encoding="utf-8"))
 with (ROOT / SEED["shotlist"]).open(newline="", encoding="utf-8") as handle:
@@ -24,7 +32,7 @@ checks = {}
 def check(label, condition):
     checks[label] = bool(condition)
     if not condition:
-        raise AssertionError(label)
+        print("EP02_CHECK_FAILED", label, flush=True)
 
 
 def curves(action):
@@ -83,13 +91,20 @@ for name in ("Cila", "Dixon", "Dage"):
     check("floor_anchor_" + name, abs(anchor_offset) < 0.02)
     image = bpy.data.images.get(name + "_EP02_Atlas.png")
     check("packed_image_" + name, image is not None and image.packed_file is not None)
+    if name == "Dage" and image is not None and image.packed_file is not None:
+        check("dage_packed_atlas_matches_sheet",
+              sha256(image.packed_file.data).hexdigest() ==
+              sha256((ROOT / info["atlas"]).read_bytes()).hexdigest())
     images.append(image.name)
     material = sprite.data.materials[0]
     materials.append(material.name)
     drivers = material.node_tree.animation_data.drivers
-    check("frame_driver_" + name, len(drivers) == 1 and
-          drivers[0].driver.variables[0].targets[0].id == sprite and
-          drivers[0].driver.variables[0].targets[0].data_path == '["sprite_frame"]')
+    driver_paths = {variable.targets[0].data_path
+                    for curve in drivers for variable in curve.driver.variables
+                    if variable.targets[0].id == sprite}
+    expected_paths = {'["sprite_frame"]'}
+    check("frame_driver_" + name, len(drivers) == len(expected_paths) and
+          driver_paths == expected_paths)
     nla = sprite.animation_data.nla_tracks
     check("sprite_nla_" + name, len(nla) == 1 and len(nla[0].strips) == 26)
     actions = [action for action in bpy.data.actions if action.name.startswith("ACT_" + name + "_")]
@@ -97,14 +112,27 @@ for name in ("Cila", "Dixon", "Dage"):
     check("constant_frames_" + name,
           all(point.interpolation == "CONSTANT" for action in actions
               for curve in curves(action) for point in curve.keyframe_points))
+    if name == "Dage":
+        patch_version = (sprite.get("dage_front_neck_patch_art") or
+                         sprite.get("dage_chin_art"))
+        check("dage_baked_front_neck_art",
+              mark_version_is_supported(patch_version) and
+              material.node_tree.nodes.get("Dage Black Chin Spot") is None)
+        check("dage_front_neck_art_all_actions",
+              all({curve.data_path for curve in curves(action)} == expected_paths and
+                  all(round(point.co.y) in FRONT_NECK_PATCH_CENTERS
+                      for curve in curves(action)
+                      for point in curve.keyframe_points)
+                  for action in actions))
     check("proxy_rig_preserved_" + name,
           bpy.data.objects.get(name + "_CTRL_RIG") is not None and
           bpy.data.objects.get(name + "_PROXY_ROOT") is not None)
 check("distinct_sprite_materials", len(set(materials)) == 3)
 check("distinct_sprite_images", len(set(images)) == 3)
-check("no_missing_image_paths", all(image.packed_file is not None or
-      Path(bpy.path.abspath(image.filepath)).is_file()
-      for image in bpy.data.images if image.source == "FILE"))
+missing_images = [image.name for image in bpy.data.images if image.source == "FILE"
+                  and image.packed_file is None and
+                  not Path(bpy.path.abspath(image.filepath)).is_file()]
+check("no_missing_image_paths", not missing_images)
 
 flap = bpy.data.objects["EP02_Box_Front_Flap_Pivot"]
 scene.frame_set(180 * scene.render.fps)
@@ -144,11 +172,17 @@ for label in ("dage_notices", "dage_paw_tests", "box_flap_settles",
     check("preview_" + label, path.is_file() and path.stat().st_size > 10000)
 check("storyboard_contact_sheet", (preview_dir / "EP02_storyboard_preview.png").is_file())
 
-report = {"passed": len(checks), "failed": 0, "checks": checks,
+passed = sum(checks.values())
+failed = len(checks) - passed
+report = {"passed": passed, "failed": failed, "checks": checks,
+          "missing_images": missing_images,
           "counts": {"collections": len(bpy.data.collections),
                      "objects": len(bpy.data.objects),
                      "actions": len(bpy.data.actions),
                      "materials": len(bpy.data.materials)}}
 path = ROOT / "EP02_VERIFICATION.json"
 path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
-print("EP02_VERIFIED", len(checks), "checks", path, flush=True)
+print("EP02_VERIFIED", passed, "passed", failed, "failed", path, flush=True)
+if failed:
+    raise AssertionError(f"Episode 02 has {failed} failed checks: " +
+                         ", ".join(label for label, okay in checks.items() if not okay))

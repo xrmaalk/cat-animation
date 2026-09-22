@@ -10,7 +10,7 @@ Use the supplied MAALTECH mascot sheet for its cheerful retro game-art language:
 
 - Purrcilla: compact cool gray-brown short-haired tabby, sage-green eyes, striped tail, dark front paws.
 - Dixon: slightly taller warm gray tabby, cream chest and muzzle, white front mittens, large round green eyes.
-- Dage: fluffy black-and-white semi-longhair tuxedo, white ruff, black face mask, green eyes, large plume tail.
+- Dage: fluffy black-and-white semi-longhair tuxedo, white muzzle and chin, white ruff with a natural irregular black fur patch along the front of the neck, black face mask, green eyes, and a large plume tail. The patch begins below the jaw, follows the forward neck fur into the ruff, and changes perspective with the pose. Use `mascot_sprites/Dage_Mascot_Idle.png` and `mascot_sprites/Dage_Sprite_Sheet.jpg` as the authoritative Dage references; never move the patch onto his chin or turn it into a bowtie or floating overlay.
 
 For production sprites, establish one common canvas size, pivot and ground line, then draw separate idle, walk/run, wave and expression frames for each cat. For Blender, use the concept as look development for final meshes and materials; the existing characters are lightweight animation proxies.
 

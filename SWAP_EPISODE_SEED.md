@@ -30,7 +30,7 @@ Keep the same beat durations unless the episode specifically needs a 15-minute o
 
 ## 4. Preserve cat identity
 
-Do not share materials or marking overlays between Cila and Dixon. Dixon must retain warm chest color, white mittens, larger round eyes, and the vertical window pose. Cila must retain the cooler compact gray-brown silhouette without white mittens. Dage alone gets longhair volume and black-and-white tuxedo markings.
+Do not share materials between Cila and Dixon. Dixon must retain warm chest color, white mittens, larger round eyes, and the vertical window pose. Cila must retain the cooler compact gray-brown silhouette without white mittens. Dage alone gets longhair volume and black-and-white tuxedo markings. His muzzle and chin remain white; his natural irregular black fur patch belongs along the front of the neck within the white ruff. Use `references/mascot_sprites/Dage_Mascot_Idle.png` and `references/mascot_sprites/Dage_Sprite_Sheet.jpg` as visual authority. Inspect the painted front-neck patch and add a check site to `dage_neck_patch.py` before selecting a new Dage frame.
 
 ## 5. Add the visual lesson
 
@@ -54,4 +54,3 @@ Check every episode for:
 - one clear true fact;
 - 20–40 shots for a 15–20 minute episode;
 - a final shared frame with all three cats.
-

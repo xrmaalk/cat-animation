@@ -1,0 +1,16 @@
+{
+  "episode_number": 3,
+  "episode_title": "Purrcilla Discovers Why a Cat's Purr is So Relaxing",
+  "episode_seed": "Purrcilla discovers why a cat's purr is so relaxing.",
+  "audience_fact": "The rhythmic sound of a cat's purr can have a calming effect on humans, potentially reducing stress and promoting relaxation.",
+  "fact_label": "A cat's purr can be relaxing.",
+  "optional_narration": "Purrcilla finds that the gentle vibrations of her own purr can soothe her worries and create a sense of well-being.",
+  "lead_character": "Purrcilla",
+  "supporting_characters": ["Dixon", "Dage"],
+  "discovery_prop": "PROP_Lap",
+  "discovery_collection": "SET_LapStudy",
+  "runtime_seconds": 1020,
+  "fps": 24,
+  "shotlist": "episode03_shotlist.csv",
+  "sprite_manifest": "references/mascot_sprites/episode02_atlases/episode02_sprite_manifest.json"
+}

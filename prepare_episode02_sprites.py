@@ -13,6 +13,8 @@ from pathlib import Path
 import numpy as np
 from PIL import Image
 
+from dage_neck_patch import FRONT_NECK_PATCH_CENTERS, MARK_VERSION
+
 
 ROOT = Path(__file__).resolve().parent
 SOURCE_DIR = ROOT / "references" / "mascot_sprites"
@@ -37,6 +39,26 @@ FRAME_MAP = {
              "enter_box": 11, "curl_in_box": 26, "look_back": 55,
              "shared_idle": 42},
 }
+
+
+def validate_dage_front_neck_sites(atlas):
+    """Fail if a selected pose lacks dark front-neck fur inside its white ruff."""
+    pixels = np.asarray(atlas, dtype=np.uint8)
+    for index, (x, y) in FRONT_NECK_PATCH_CENTERS.items():
+        cell = pixels[(index // COLUMNS) * CELL:(index // COLUMNS + 1) * CELL,
+                      (index % COLUMNS) * CELL:(index % COLUMNS + 1) * CELL]
+        core = cell[y - 5:y + 6, x - 5:x + 6]
+        ruff = cell[y - 15:y + 16, x - 15:x + 16]
+        core_dark = (core[:, :, :3].mean(axis=2) < 95) & (core[:, :, 3] > 128)
+        ruff_light = (ruff[:, :, :3].mean(axis=2) > 160) & (ruff[:, :, 3] > 128)
+        dark_fraction = float(core_dark.mean())
+        light_fraction = float(ruff_light.mean())
+        if dark_fraction < 0.25 or light_fraction < 0.20:
+            raise ValueError(
+                f"Dage frame {index} lacks the baked black front-neck patch "
+                f"({dark_fraction:.0%} dark center, {light_fraction:.0%} light ruff); "
+                f"inspect the references and dage_neck_patch.py"
+            )
 
 
 def runs_where(values, predicate):
@@ -130,6 +152,8 @@ def process_character(name, filename):
             bbox = source_cell.getchannel("A").getbbox()
             foot_rows.append(None if bbox is None else y + bbox[3] - row * CELL)
 
+    if name == "Dage":
+        validate_dage_front_neck_sites(atlas)
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     atlas_path = OUTPUT_DIR / f"{name}_EP02_Atlas.png"
     atlas.save(atlas_path)
@@ -156,6 +180,11 @@ def main():
                   for name, filename in SOURCES.items()}
     manifest = {
         "note": "Normalized 7x10 atlases derived from the supplied artwork. Dixon's final atlas row is transparent padding because the source has 7x9 cells.",
+        "dage_front_neck_patch": MARK_VERSION,
+        "dage_visual_references": [
+            "references/mascot_sprites/Dage_Mascot_Idle.png",
+            "references/mascot_sprites/Dage_Sprite_Sheet.jpg",
+        ],
         "characters": characters,
     }
     path = OUTPUT_DIR / "episode02_sprite_manifest.json"

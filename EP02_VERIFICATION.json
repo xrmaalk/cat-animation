@@ -1,6 +1,6 @@
 {
-  "passed": 96,
-  "failed": 0,
+  "passed": 98,
+  "failed": 1,
   "checks": {
     "separate_ep02_scene": true,
     "episode_seed_properties": true,
@@ -68,14 +68,17 @@
     "normalized_grid_Dage": true,
     "floor_anchor_Dage": true,
     "packed_image_Dage": true,
+    "dage_packed_atlas_matches_sheet": true,
     "frame_driver_Dage": true,
     "sprite_nla_Dage": true,
     "sprite_actions_Dage": true,
     "constant_frames_Dage": true,
+    "dage_baked_chin_art": true,
+    "dage_chin_art_all_actions": true,
     "proxy_rig_preserved_Dage": true,
     "distinct_sprite_materials": true,
     "distinct_sprite_images": true,
-    "no_missing_image_paths": true,
+    "no_missing_image_paths": false,
     "box_flap_responds": true,
     "frame_108_Dage": true,
     "frame_156_Dage": true,
@@ -99,6 +102,13 @@
     "preview_fact_label_optional": true,
     "storyboard_contact_sheet": true
   },
+  "missing_images": [
+    "Cila-Curious(1).jpg",
+    "Cila-LAP.jpg",
+    "Dage-Condo.jpg",
+    "Dixon-Curious.jpg",
+    "Dixon-Venting(1).jpg"
+  ],
   "counts": {
     "collections": 16,
     "objects": 247,

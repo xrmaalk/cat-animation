@@ -31,6 +31,8 @@ The supplied sheets are **not 8×8**. Cila and Dage each contain 7 columns × 10
 
 `ACT_Dage_ENTER_BOX` cycles through source frames 9–13; `ACT_Cila_APPROACH` cycles through 14–18. The complete map, source dimensions and hashes, detected cell boundaries, and atlas paths are in `episode02_sprite_manifest.json`.
 
+Dage's irregular black front-neck patch is painted into the revised source spritesheet, with a natural fur edge inside the white ruff; his muzzle and chin remain white. `Dage_Mascot_Idle.png` and `Dage_Sprite_Sheet.jpg` are the authoritative visual references. Blender reads those pixels directly instead of adding a geometric shader mark. `dage_neck_patch.py` defines inspection sites for all Dage frames currently used by Episode 02 and the animated short; sprite preparation checks for dark front-neck fur and surrounding light ruff at each site. When adding a new Dage pose, inspect its neck/ruff artwork and add a check site first. To update a saved Episode 02 file without rebuilding it, run `--python apply_dage_sprite_sheet.py` with that file open in Blender.
+
 The sprites **replace proxy meshes for Episode 02 rendering**. The original 3D rigs, proxy roots, and their actions remain in the new file as hidden references. Sprite planes use their own NLA actions and camera-facing target; bone actions do not drive the planes.
 
 ## Rebuild and review

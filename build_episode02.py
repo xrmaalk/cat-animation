@@ -20,6 +20,14 @@ from mathutils import Vector
 
 
 ROOT = Path(__file__).resolve().parent
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+from dage_neck_patch import (
+    MARK_VERSION,
+    mark_version_is_supported,
+    require_front_neck_patch,
+)
+
 SEED = json.loads((ROOT / "episode02_seed.json").read_text(encoding="utf-8"))
 MANIFEST = json.loads((ROOT / SEED["sprite_manifest"]).read_text(encoding="utf-8"))
 with (ROOT / SEED["shotlist"]).open(newline="", encoding="utf-8") as handle:
@@ -274,6 +282,9 @@ def create_sprite(name, camera_target):
     sprite.parent = controller
     sprite.location = (0, 0, -0.04)
     sprite["sprite_frame"] = info["frame_map"]["idle"]
+    if name == "Dage":
+        require_front_neck_patch(info["frame_map"]["idle"])
+        sprite["dage_front_neck_patch_art"] = MARK_VERSION
     sprite["sprite_valid_frames"] = info["valid_frames"]
     sprite["source_sheet"] = info["source"]
     sprite["atlas_grid"] = "7x10, 192px cells, top-left row-major"
@@ -317,6 +328,8 @@ def create_sprite_actions(sprite, name, frame_map):
             sprite["sprite_frame"] = index
             sprite.keyframe_insert(data_path='["sprite_frame"]', frame=frame,
                                    group="Sprite Frame")
+            if name == "Dage":
+                require_front_neck_patch(index)
         action = sprite.animation_data.action
         action.name = f"ACT_{name}_{pose}"
         action.use_fake_user = True
@@ -501,6 +514,10 @@ def audit():
             raise RuntimeError(f"Missing sprite or sprite_frame: {name}")
         if sprite.name not in bpy.data.collections[f"CHAR_{name}"].objects:
             raise RuntimeError(f"Sprite outside CHAR_{name}")
+        patch_version = (sprite.get("dage_front_neck_patch_art") or
+                         sprite.get("dage_chin_art"))
+        if name == "Dage" and not mark_version_is_supported(patch_version):
+            raise RuntimeError("Dage sheet needs upgrading; run apply_dage_sprite_sheet.py")
     holder = bpy.data.objects["EDITORIAL_MASTER_NLA"]
     tracks = {track.name: len(track.strips)
               for track in holder.animation_data.nla_tracks}
