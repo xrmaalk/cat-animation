@@ -9,7 +9,7 @@
   "supporting_characters": ["Dixon", "Dage"],
   "discovery_prop": "PROP_Lap",
   "discovery_collection": "SET_LapStudy",
-  "runtime_seconds": 1020,
+  "runtime_seconds": 240,
   "fps": 24,
   "shotlist": "episode03_shotlist.csv",
   "sprite_manifest": "references/mascot_sprites/episode02_atlases/episode02_sprite_manifest.json"

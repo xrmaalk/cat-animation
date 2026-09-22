@@ -4,6 +4,8 @@ blender --background Purrcilla_Dixon_Dage_EP03_Purr.blend \
   --python render_episode03_preview.py
 """
 
+import csv
+import json
 from pathlib import Path
 import sys
 
@@ -11,6 +13,15 @@ import bpy
 
 
 ROOT = Path(__file__).resolve().parent
+EPISODE_DIR = ROOT / "episodes" / "3-episode"
+SEED = json.loads(
+    (EPISODE_DIR / "episode03_seed.json").read_text(encoding="utf-8")
+)
+with (EPISODE_DIR / SEED["shotlist"]).open(
+    newline="", encoding="utf-8"
+) as handle:
+    SHOTS = list(csv.DictReader(handle))
+SHOT_BY_BEAT = {shot["beat"]: shot for shot in SHOTS}
 OUT = ROOT / "preview_frames" / "episode03_purr"
 OUT.mkdir(parents=True, exist_ok=True)
 args = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else []
@@ -24,19 +35,27 @@ scene.render.resolution_percentage = 100
 scene.eevee.taa_render_samples = 32
 scene.render.image_settings.file_format = "PNG"
 
+def frame_for(beat, fraction=0.55):
+    shot = SHOT_BY_BEAT[beat]
+    start = int(shot["start_seconds"])
+    duration = int(shot["duration_seconds"])
+    seconds = start + min(max(1.0, duration * fraction), duration - 1.0)
+    return max(1, round(seconds * scene.render.fps))
+
+
 frames = [
-    ("cila_restless", 118),
-    ("cila_settles", 168),
-    ("first_purr", 195),
-    ("cila_relaxes", 270),
-    ("dixon_listens", 410),
-    ("shared_listening", 550),
-    ("shared_final", 920),
+    ("cila_restless", "CILA_FEELS_RESTLESS"),
+    ("cila_settles", "CILA_SETTLES"),
+    ("first_purr", "FIRST_PURR"),
+    ("cila_relaxes", "CILA_RELAXES"),
+    ("dixon_listens", "DIXON_LISTENS"),
+    ("shared_listening", "SHARED_LISTENING"),
+    ("shared_final", "SHARED_FINAL_FRAME"),
 ]
-for label, seconds in frames:
+for label, beat in frames:
     if only and label not in only:
         continue
-    scene.frame_set(seconds * scene.render.fps)
+    scene.frame_set(frame_for(beat))
     scene.render.filepath = str(OUT / (label + ".png"))
     bpy.ops.render.render(write_still=True)
     print("EP03_PREVIEW", label, scene.camera.name,
@@ -46,7 +65,7 @@ if not only or "fact_label_optional" in only:
     text_group = bpy.data.collections["NARRATION_TEXT_OFF"]
     text_group.hide_render = False
     text_group.hide_viewport = False
-    scene.frame_set(660 * scene.render.fps)
+    scene.frame_set(frame_for("FACT_LABEL"))
     scene.render.filepath = str(OUT / "fact_label_optional.png")
     bpy.ops.render.render(write_still=True)
     print("EP03_PREVIEW", "fact_label_optional", scene.camera.name,

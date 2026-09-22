@@ -26,7 +26,7 @@ Duplicate the Episode 01 NLA beat actions and update:
 - the one fact label and optional narrator lines;
 - the cause-and-effect animation in the experiment block.
 
-Keep the same beat durations unless the episode specifically needs a 15-minute or 20-minute variant. The template is built from independent shots, so longer runtime means adding or extending blocks—not animating one continuous take.
+Set each new episode's total runtime from the script, but keep it between 180 and 300 seconds. The template is built from independent shots, so fit the beat durations to that 3–5 minute window. Split an overlong script into more than one episode instead of stretching the timeline.
 
 ## 4. Preserve cat identity
 
@@ -52,5 +52,5 @@ Check every episode for:
 - slow blink protected from narration;
 - no slapstick cruelty or dangerous props;
 - one clear true fact;
-- 20–40 shots for a 15–20 minute episode;
+- enough modular shots to tell the script clearly, usually 16–30 for a 3–5 minute episode;
 - a final shared frame with all three cats.

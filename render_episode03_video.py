@@ -1,4 +1,4 @@
-"""Render a 17-minute Episode 03 shot-hold animatic and encode it to MP4.
+"""Render a 3-5 minute Episode 03 shot-hold animatic and encode it to MP4.
 
 The Episode 03 project is an editorial animatic rather than continuous final
 animation. This script renders one representative 1280x720 Eevee frame for
@@ -14,6 +14,7 @@ when FFmpeg is not available at the detected location.
 
 import csv
 from hashlib import sha256
+import json
 from pathlib import Path
 import shutil
 import subprocess
@@ -44,7 +45,10 @@ def ffmpeg_executable():
 
 ROOT = Path(__file__).resolve().parent
 EPISODE_DIR = ROOT / "episodes" / "3-episode"
-with (EPISODE_DIR / "episode03_shotlist.csv").open(
+SEED = json.loads(
+    (EPISODE_DIR / "episode03_seed.json").read_text(encoding="utf-8")
+)
+with (EPISODE_DIR / SEED["shotlist"]).open(
     newline="", encoding="utf-8"
 ) as handle:
     SHOTS = list(csv.DictReader(handle))
@@ -54,6 +58,20 @@ if scene.name != "EP03_Purr" or scene.get("episode_number") != 3:
     raise RuntimeError("Open the built Episode 03 scene before rendering")
 if len(SHOTS) != 26:
     raise RuntimeError("Episode 03 requires exactly 26 shots")
+runtime = int(SEED["runtime_seconds"])
+cursor = 0
+for shot in SHOTS:
+    start = int(shot["start_seconds"])
+    duration = int(shot["duration_seconds"])
+    if start != cursor or duration <= 0:
+        raise RuntimeError(f"Non-contiguous timing at {shot['shot']}")
+    cursor += duration
+if cursor != runtime or not 180 <= runtime <= 300:
+    raise RuntimeError("Episode 03 runtime must be contiguous and 3-5 minutes")
+if scene.render.fps != int(SEED["fps"]):
+    raise RuntimeError("Episode 03 scene FPS does not match the seed")
+if scene.frame_end != runtime * scene.render.fps:
+    raise RuntimeError("Episode 03 scene range does not match the shot plan")
 
 output_dir = ROOT / "renders"
 output_dir.mkdir(exist_ok=True)
@@ -144,9 +162,9 @@ command = [
     "-i",
     str(concat_path),
     "-vf",
-    "fps=24,format=yuv420p",
+    f"fps={SEED['fps']},format=yuv420p",
     "-t",
-    "1020",
+    str(runtime),
     "-c:v",
     "libx264",
     "-preset",
@@ -156,7 +174,7 @@ command = [
     "-movflags",
     "+faststart",
     "-metadata",
-    "title=Purrcilla Discovers Why a Cat's Purr Is So Relaxing",
+    f"title={SEED['episode_title']}",
     str(temporary),
 ]
 subprocess.run(command, check=True)

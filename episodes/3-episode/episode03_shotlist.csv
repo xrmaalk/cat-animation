@@ -1,27 +1,27 @@
 shot,beat,start_seconds,duration_seconds,camera,description,dage_action,dixon_action,cila_action
-S01,HOME_INTRODUCTION,0,45,CAM_CatEye_A,"Quiet home geography; the lap cushion waits in the shared room",IDLE,IDLE,IDLE
-S02,TITLE,45,15,CAM_CatEye_A,"Title over an unhurried morning",IDLE,IDLE,IDLE
-S03,NAMES_CILA,60,4,CAM_HeroPortrait_Cila,"Purrcilla looks alert but slightly unsettled",IDLE,IDLE,CURIOUS
-S04,NAMES_DAGE,64,4,CAM_HeroPortrait_Dage,"Dage watches quietly from his familiar place",CURIOUS,IDLE,IDLE
-S05,NAMES_DIXON,68,4,CAM_HeroPortrait_Dixon,"Dixon listens from the window",IDLE,WINDOW_REPORT,IDLE
-S06,MORNING_GEOGRAPHY,72,36,CAM_PorchWide,"Establish the calm room and the lap cushion",IDLE,IDLE,IDLE
-S07,CILA_FEELS_RESTLESS,108,24,CAM_HeroPortrait_Cila,"Purrcilla pauses and checks the room",IDLE,IDLE,CURIOUS
-S08,CILA_APPROACHES_LAP,132,24,CAM_CatEye_A,"Purrcilla approaches the lap cushion",IDLE,IDLE,APPROACH
-S09,CILA_SETTLES,156,24,CAM_HeroPortrait_Cila,"She circles once and settles into a loaf",IDLE,IDLE,LAP_LOAF
-S10,FIRST_PURR,180,36,CAM_Insert_Eyes,"Her eyes soften as a gentle purr begins",IDLE,IDLE,LAP_LOAF
-S11,PURR_RHYTHM,216,36,CAM_Insert_Paws,"A close view suggests the small steady rhythm",IDLE,IDLE,LAP_LOAF
-S12,CILA_RELAXES,252,42,CAM_HeroPortrait_Cila,"Her posture loosens while the rhythm continues",IDLE,IDLE,LAP_LOAF
-S13,QUIET_HOLD,294,42,CAM_HeroPortrait_Cila,"Protect a long quiet hold and slow blink",IDLE,IDLE,LAP_LOAF
-S14,DIXON_NOTICES,336,54,CAM_WindowReport,"Dixon turns from the window toward the sound",IDLE,OBSERVE,LAP_LOAF
-S15,DIXON_LISTENS,390,48,CAM_HeroPortrait_Dixon,"Dixon listens from a respectful distance",IDLE,OBSERVE,LAP_LOAF
-S16,DAGE_NOTICES,438,42,CAM_CondoPeek,"Dage lifts his head and notices the shared calm",CURIOUS,OBSERVE,LAP_LOAF
-S17,DAGE_APPROACHES,480,48,CAM_CatEye_A,"Dage moves closer without crowding Purrcilla",CURIOUS,OBSERVE,LAP_LOAF
-S18,SHARED_LISTENING,528,48,CAM_CatEye_A,"All three settle into the same quiet rhythm",CURIOUS,OBSERVE,LAP_LOAF
-S19,SECOND_PURR,576,60,CAM_HeroPortrait_Cila,"The purr returns after a brief pause",IDLE,IDLE,LAP_LOAF
-S20,FACT_LABEL,636,54,CAM_CatEye_A,"Quiet visual fact: a cat's purr can be relaxing",IDLE,IDLE,LAP_LOAF
-S21,SHARED_QUIET,690,48,CAM_CatEye_A,"All three share the calm space; no narration over the slow blink",SHARED_IDLE,SHARED_IDLE,LAP_LOAF
-S22,PURR_CALLBACK,738,48,CAM_Insert_Eyes,"Purrcilla opens her eyes, then settles again",IDLE,LOOK_BACK,LAP_LOAF
-S23,RECAP_RHYTHM,786,36,CAM_Insert_Paws,"The sound is soft, steady, and repeated",IDLE,IDLE,LAP_LOAF
-S24,RECAP_RELAXATION,822,36,CAM_CatEye_A,"The room has become visibly calmer",IDLE,IDLE,LAP_LOAF
-S25,CILA_CHOOSES_LAP,858,36,CAM_HeroPortrait_Cila,"Purrcilla chooses the lap cushion again",IDLE,IDLE,LAP_LOAF
-S26,SHARED_FINAL_FRAME,894,126,CAM_CatEye_A,"Purrcilla rests while Dixon and Dage remain nearby in a long final hold",SHARED_IDLE,SHARED_IDLE,SHARED_IDLE
+S01,HOME_INTRODUCTION,0,10,CAM_CatEye_A,"Quiet home geography; the lap cushion waits in the shared room",IDLE,IDLE,IDLE
+S02,TITLE,10,6,CAM_CatEye_A,"Title over an unhurried morning",IDLE,IDLE,IDLE
+S03,NAMES_CILA,16,4,CAM_HeroPortrait_Cila,"Purrcilla looks alert but slightly unsettled",IDLE,IDLE,CURIOUS
+S04,NAMES_DAGE,20,4,CAM_HeroPortrait_Dage,"Dage watches quietly from his familiar place",CURIOUS,IDLE,IDLE
+S05,NAMES_DIXON,24,4,CAM_HeroPortrait_Dixon,"Dixon listens from the window",IDLE,WINDOW_REPORT,IDLE
+S06,MORNING_GEOGRAPHY,28,10,CAM_PorchWide,"Establish the calm room and the lap cushion",IDLE,IDLE,IDLE
+S07,CILA_FEELS_RESTLESS,38,8,CAM_HeroPortrait_Cila,"Purrcilla pauses and checks the room",IDLE,IDLE,CURIOUS
+S08,CILA_APPROACHES_LAP,46,9,CAM_CatEye_A,"Purrcilla approaches the lap cushion",IDLE,IDLE,APPROACH
+S09,CILA_SETTLES,55,8,CAM_HeroPortrait_Cila,"She circles once and settles into a loaf",IDLE,IDLE,LAP_LOAF
+S10,FIRST_PURR,63,10,CAM_Insert_Eyes,"Her eyes soften as a gentle purr begins",IDLE,IDLE,LAP_LOAF
+S11,PURR_RHYTHM,73,9,CAM_Insert_Paws,"A close view suggests the small steady rhythm",IDLE,IDLE,LAP_LOAF
+S12,CILA_RELAXES,82,10,CAM_HeroPortrait_Cila,"Her posture loosens while the rhythm continues",IDLE,IDLE,LAP_LOAF
+S13,QUIET_HOLD,92,10,CAM_HeroPortrait_Cila,"Protect a long quiet hold and slow blink",IDLE,IDLE,LAP_LOAF
+S14,DIXON_NOTICES,102,10,CAM_WindowReport,"Dixon turns from the window toward the sound",IDLE,OBSERVE,LAP_LOAF
+S15,DIXON_LISTENS,112,9,CAM_HeroPortrait_Dixon,"Dixon listens from a respectful distance",IDLE,OBSERVE,LAP_LOAF
+S16,DAGE_NOTICES,121,9,CAM_CondoPeek,"Dage lifts his head and notices the shared calm",CURIOUS,OBSERVE,LAP_LOAF
+S17,DAGE_APPROACHES,130,10,CAM_CatEye_A,"Dage moves closer without crowding Purrcilla",CURIOUS,OBSERVE,LAP_LOAF
+S18,SHARED_LISTENING,140,10,CAM_CatEye_A,"All three settle into the same quiet rhythm",CURIOUS,OBSERVE,LAP_LOAF
+S19,SECOND_PURR,150,12,CAM_HeroPortrait_Cila,"The purr returns after a brief pause",IDLE,IDLE,LAP_LOAF
+S20,FACT_LABEL,162,12,CAM_CatEye_A,"Quiet visual fact: a cat's purr can be relaxing",IDLE,IDLE,LAP_LOAF
+S21,SHARED_QUIET,174,10,CAM_CatEye_A,"All three share the calm space; no narration over the slow blink",SHARED_IDLE,SHARED_IDLE,LAP_LOAF
+S22,PURR_CALLBACK,184,9,CAM_Insert_Eyes,"Purrcilla opens her eyes, then settles again",IDLE,LOOK_BACK,LAP_LOAF
+S23,RECAP_RHYTHM,193,8,CAM_Insert_Paws,"The sound is soft, steady, and repeated",IDLE,IDLE,LAP_LOAF
+S24,RECAP_RELAXATION,201,8,CAM_CatEye_A,"The room has become visibly calmer",IDLE,IDLE,LAP_LOAF
+S25,CILA_CHOOSES_LAP,209,8,CAM_HeroPortrait_Cila,"Purrcilla chooses the lap cushion again",IDLE,IDLE,LAP_LOAF
+S26,SHARED_FINAL_FRAME,217,23,CAM_CatEye_A,"Purrcilla rests while Dixon and Dage remain nearby in a long final hold",SHARED_IDLE,SHARED_IDLE,SHARED_IDLE

@@ -35,8 +35,9 @@ MANIFEST = json.loads(
 with (EPISODE_DIR / SEED["shotlist"]).open(newline="", encoding="utf-8") as handle:
     SHOTS = list(csv.DictReader(handle))
 FPS = SEED["fps"]
+SHOT_BY_BEAT = {shot["beat"]: shot for shot in SHOTS}
 OUTPUT = ROOT / "Purrcilla_Dixon_Dage_EP03_Purr.blend"
-SETUP_VERSION = "EP03_Purr_v1"
+SETUP_VERSION = "EP03_Purr_v2_4min"
 LAP_CENTER = Vector((-1.0, -0.25, 0.0))
 
 
@@ -600,16 +601,24 @@ def add_sprite_nla(sprite, name, actions):
 
 
 def animate_controllers(controllers):
+    start = lambda beat: int(SHOT_BY_BEAT[beat]["start_seconds"])
+    end = int(SEED["runtime_seconds"])
     paths = {
-        "Dage": [(0, (-4.5, 0.7, 0)), (438, (-4.5, 0.7, 0)),
-                 (480, (1.35, 0.05, 0)), (528, (0.45, -0.05, 0)),
-                 (1020, (0.45, -0.05, 0))],
-        "Dixon": [(0, (2.9, 1.4, 0)), (336, (2.9, 1.4, 0)),
-                  (390, (1.6, -0.05, 0)), (690, (2.0, 0.05, 0)),
-                  (1020, (2.0, 0.05, 0))],
-        "Cila": [(0, (-1.8, -0.52, 0)), (108, (-1.8, -0.52, 0)),
-                 (132, (-1.65, -0.45, 0)), (156, (-1.05, -0.25, 0.17)),
-                 (1020, (-1.05, -0.25, 0.17))],
+        "Dage": [(0, (-4.5, 0.7, 0)),
+                 (start("DAGE_NOTICES"), (-4.5, 0.7, 0)),
+                 (start("DAGE_APPROACHES"), (1.35, 0.05, 0)),
+                 (start("SHARED_LISTENING"), (0.45, -0.05, 0)),
+                 (end, (0.45, -0.05, 0))],
+        "Dixon": [(0, (2.9, 1.4, 0)),
+                  (start("DIXON_NOTICES"), (2.9, 1.4, 0)),
+                  (start("DIXON_LISTENS"), (1.6, -0.05, 0)),
+                  (start("SHARED_QUIET"), (2.0, 0.05, 0)),
+                  (end, (2.0, 0.05, 0))],
+        "Cila": [(0, (-1.8, -0.52, 0)),
+                 (start("CILA_FEELS_RESTLESS"), (-1.8, -0.52, 0)),
+                 (start("CILA_APPROACHES_LAP"), (-1.65, -0.45, 0)),
+                 (start("CILA_SETTLES"), (-1.05, -0.25, 0.17)),
+                 (end, (-1.05, -0.25, 0.17))],
     }
     for name, points in paths.items():
         controller = controllers[name]
@@ -649,17 +658,6 @@ def editorial_nla():
             "Episode 01 NLA layout does not match the 26-shot Episode 03 plan"
         )
 
-    for shot, source_strip in zip(SHOTS, source_strips):
-        start = int(shot["start_seconds"]) * FPS
-        duration = int(shot["duration_seconds"]) * FPS
-        expected_end = start + duration - 1
-
-        if (
-            round(source_strip.frame_start) != start
-            or round(source_strip.frame_end) != expected_end
-        ):
-            raise RuntimeError(f"Timing mismatch at {shot['shot']}")
-
     source_track.mute = True
 
     episode_track = holder.animation_data.nla_tracks.new()
@@ -683,11 +681,18 @@ def editorial_nla():
             strip.action_slot = action.slots[0]
 
         strip.action_frame_start = source_strip.action_frame_start
-        strip.action_frame_end = source_strip.action_frame_end
+        strip.action_frame_end = max(
+            strip.action_frame_start + 1,
+            source_strip.action_frame_end,
+        )
+        duration = int(shot["duration_seconds"]) * FPS
+        strip.scale = (duration - 1) / (
+            strip.action_frame_end - strip.action_frame_start
+        )
         strip.blend_type = "REPLACE"
 
     holder["episode03_editorial"] = (
-        "26 modular blocks, Episode 01 timing retained"
+        f"26 modular blocks retimed to {SEED['runtime_seconds']} seconds"
     )
 
 
@@ -820,9 +825,20 @@ def main():
         raise RuntimeError("Start from the existing Episode 01 template blend")
     if OUTPUT.exists() and "--overwrite" not in sys.argv:
         raise FileExistsError(f"Output exists: {OUTPUT}")
-    if len(SHOTS) != 26 or int(SHOTS[-1]["start_seconds"]) + int(SHOTS[-1]["duration_seconds"]) != 1020:
+    runtime = int(SEED["runtime_seconds"])
+    cursor = 0
+    for shot in SHOTS:
+        start = int(shot["start_seconds"])
+        duration = int(shot["duration_seconds"])
+        if start != cursor or duration <= 0:
+            raise RuntimeError(
+                f"Episode 03 timing is not contiguous at {shot['shot']}"
+            )
+        cursor += duration
+    if len(SHOTS) != 26 or cursor != runtime or not 180 <= runtime <= 300:
         raise RuntimeError(
-            "Episode 03 shot list must retain 26 blocks and 17:00 runtime")
+            "Episode 03 must contain 26 contiguous blocks and run 3-5 minutes"
+        )
     for name in ("Cila", "Dixon", "Dage"):
         if (ROOT / MANIFEST["characters"][name]["atlas"]).is_file() is False:
             raise FileNotFoundError(f"Missing prepared atlas for {name}")
@@ -852,11 +868,13 @@ def main():
     scene["discovery_prop"] = SEED["discovery_prop"]
     scene["discovery_collection"] = SEED["discovery_collection"]
     scene["lead_character"] = SEED["lead_character"]
+    scene["runtime_seconds"] = runtime
     scene["sprite_manifest"] = SEED["sprite_manifest"]
     scene["episode01_source_blend"] = source_blend
     scene["episode03_setup_version"] = SETUP_VERSION
     scene["sprite_rig_policy"] = "EP03 sprite planes use their own actions; 3D rigs remain as hidden references"
-    scene.frame_set(108 * FPS)
+    scene.frame_end = runtime * FPS
+    scene.frame_set(int(SHOT_BY_BEAT["CILA_FEELS_RESTLESS"]["start_seconds"]) * FPS)
     audit()
     bpy.context.preferences.filepaths.save_version = 0
     bpy.ops.wm.save_as_mainfile(filepath=str(OUTPUT))

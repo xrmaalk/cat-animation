@@ -16,6 +16,8 @@ Purrcilla is named **Cila** in Blender objects and sprite data. Dixon and Dage k
 
 The Episode 01 and Episode 02 timelines each contain 26 modular shots at 24 fps. Their 17-minute duration is an editorial plan with key actions and holds, rather than 17 minutes of continuous finished animation. The separate 12-second short can be rendered to a playable MP4 using the workflow below.
 
+From Episode 03 forward, finished videos must run 3–5 minutes (180–300 seconds), with the exact duration chosen to fit the script. Episode 03 is timed to 4:00. Builders and renderers should reject shot plans outside that range.
+
 ## Animated short
 
 `Purrcilla_Dixon_Dage_Animated_Short.blend` is a 12-second, 24 fps editable proof of concept for Episode 01. Dixon notices and paws at the blinds, the slats turn, floor stripes move, and Cila and Dage join the final view. It uses the template's proxy characters, so the acting and meshes are still suitable for an animatic rather than a finished character performance. The short is a separate file from the 17-minute template.

@@ -3,11 +3,11 @@
 The authoritative Dage visual references are:
 
 - `Dage_Mascot_Idle.png` — primary close reference for coat placement, ruff shape, face, clothing, and tail.
-- `Dage_Sprite_Sheet.jpg` — pose reference showing how the same identity reads across movement and expressions.
+- `Dage_SpriteSheet.png` — pose reference showing how the same identity reads across movement and expressions.
 
 ![Dage idle reference](Dage_Mascot_Idle.png)
 
-![Dage pose sheet reference](Dage_Sprite_Sheet.jpg)
+![Dage pose sheet reference](Dage_SpriteSheet.png)
 
 ## Front-neck marking
 

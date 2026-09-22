@@ -67,7 +67,13 @@ check(
         )
     ),
 )
-check("timing_preserved", scene.frame_end == 24480 and scene.render.fps == 24)
+runtime = int(SEED["runtime_seconds"])
+check(
+    "runtime_3_to_5_minutes",
+    180 <= runtime <= 300
+    and scene.frame_end == runtime * scene.render.fps
+    and scene.render.fps == SEED["fps"],
+)
 check(
     "lap_study_and_prop",
     bpy.data.collections.get("SET_LapStudy") is not None
@@ -91,6 +97,25 @@ check(
     "ep03_editorial_modular",
     "EP03_BEATS" in tracks and len(tracks["EP03_BEATS"].strips) == 26,
 )
+if "EP03_BEATS" in tracks:
+    ep03_strips = sorted(
+        tracks["EP03_BEATS"].strips,
+        key=lambda strip: strip.frame_start,
+    )
+    check(
+        "ep03_editorial_timing",
+        len(ep03_strips) == len(SHOTS)
+        and all(
+            round(strip.frame_start)
+            == int(shot["start_seconds"]) * scene.render.fps
+            and round(strip.frame_end)
+            == (
+                int(shot["start_seconds"])
+                + int(shot["duration_seconds"])
+            ) * scene.render.fps - 1
+            for shot, strip in zip(SHOTS, ep03_strips)
+        ),
+    )
 check(
     "ep01_actions_preserved",
     sum(action.name.startswith("ACT_S") for action in bpy.data.actions) >= 26,
@@ -99,7 +124,12 @@ check(
     "ep03_shot_data",
     len(SHOTS) == 26
     and int(SHOTS[-1]["start_seconds"])
-    + int(SHOTS[-1]["duration_seconds"]) == 1020,
+    + int(SHOTS[-1]["duration_seconds"]) == runtime
+    and all(
+        int(shot["start_seconds"])
+        == sum(int(prior["duration_seconds"]) for prior in SHOTS[:index])
+        for index, shot in enumerate(SHOTS)
+    ),
 )
 
 markers = [
@@ -233,15 +263,15 @@ check("distinct_sprite_materials", len(set(materials)) == 3)
 check("distinct_sprite_images", len(set(images)) == 3)
 
 expected_frames = {
-    108: {"Cila": 5},
-    132: {"Cila": 14},
-    156: {"Cila": 40},
-    180: {"Cila": 40},
-    336: {"Dixon": 43},
-    390: {"Dixon": 43},
-    438: {"Dage": 6},
-    690: {"Dage": 42, "Dixon": 0, "Cila": 40},
-    894: {"Dage": 42, "Dixon": 0, "Cila": 0},
+    38: {"Cila": 5},
+    46: {"Cila": 14},
+    55: {"Cila": 40},
+    63: {"Cila": 40},
+    102: {"Dixon": 43},
+    112: {"Dixon": 43},
+    121: {"Dage": 6},
+    174: {"Dage": 42, "Dixon": 0, "Cila": 40},
+    217: {"Dage": 42, "Dixon": 0, "Cila": 0},
 }
 for seconds, pairs in expected_frames.items():
     scene.frame_set(seconds * scene.render.fps)
@@ -252,9 +282,9 @@ for seconds, pairs in expected_frames.items():
         )
 
 expected_positions = {
-    156: {"Cila": (-1.05, -0.25, 0.17)},
-    528: {"Dage": (0.45, -0.05, 0.0)},
-    690: {"Dixon": (2.0, 0.05, 0.0)},
+    55: {"Cila": (-1.05, -0.25, 0.17)},
+    140: {"Dage": (0.45, -0.05, 0.0)},
+    174: {"Dixon": (2.0, 0.05, 0.0)},
 }
 for seconds, pairs in expected_positions.items():
     scene.frame_set(seconds * scene.render.fps)
