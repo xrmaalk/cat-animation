@@ -1,0 +1,18 @@
+{
+  "episode_number": 5,
+  "episode_title": "Dixon Discovers Why the Window Turns Cloudy",
+  "episode_seed": "Dixon discovers why his warm breath makes a cool window turn cloudy.",
+  "audience_fact": "Warm, moist air forms tiny water droplets when it cools against cold glass.",
+  "fact_label": "Cool glass turns water vapor into tiny droplets.",
+  "optional_narration": "Dixon's warm breath carries water vapor. When it touches the cool window, the vapor cools into tiny droplets that look like fog.",
+  "lead_character": "Dixon",
+  "supporting_characters": ["Purrcilla", "Dage"],
+  "discovery_prop": "PROP_CondensationWindow",
+  "discovery_collection": "SET_CondensationStudy",
+  "runtime_policy": "short",
+  "runtime_seconds": 86,
+  "fps": 24,
+  "shotlist": "episode05_shotlist.csv",
+  "performance_contract": "episode05_performance_contract.json",
+  "sprite_manifest": "references/mascot_sprites/current_sprite_manifest.json"
+}

@@ -23,6 +23,29 @@ class EpisodePlanTests(unittest.TestCase):
         self.assertEqual(len(shots), 26)
         self.assertEqual(runtime_bounds(3), (180, 300))
 
+    def test_episode_four_is_short_contiguous_and_uses_current_art(self):
+        seed, shots = load_episode_plan(4)
+        self.assertEqual(int(seed["runtime_seconds"]), 88)
+        self.assertEqual(seed["lead_character"], "Dage")
+        self.assertEqual(
+            seed["sprite_manifest"],
+            "references/mascot_sprites/current_sprite_manifest.json",
+        )
+        self.assertEqual(len(shots), 18)
+        self.assertEqual(pacing_flags(shots), [])
+
+    def test_episode_five_is_short_role_aware_and_uses_current_art(self):
+        seed, shots = load_episode_plan(5)
+        self.assertEqual(int(seed["runtime_seconds"]), 86)
+        self.assertEqual(seed["lead_character"], "Dixon")
+        self.assertEqual(seed["performance_contract"],
+                         "episode05_performance_contract.json")
+        self.assertEqual(seed["sprite_manifest"],
+                         "references/mascot_sprites/current_sprite_manifest.json")
+        self.assertEqual(len(shots), 17)
+        self.assertTrue(all("dixon_role" in shot for shot in shots))
+        self.assertEqual(pacing_flags(shots), [])
+
     def test_long_shot_is_review_flag_not_automatic_rejection(self):
         shots = [
             {"shot": "S01", "duration_seconds": "8"},

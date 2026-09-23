@@ -1,0 +1,17 @@
+{
+  "episode_number": 4,
+  "episode_title": "Dage Discovers Why the Sunbeam Moves",
+  "episode_seed": "Dage follows a warm sunbeam across the floor and discovers why it appears to move.",
+  "audience_fact": "A sunbeam shifts across the floor because Earth rotates, changing the angle at which sunlight enters the window.",
+  "fact_label": "Earth's rotation makes the sunbeam move.",
+  "optional_narration": "As Earth turns, sunlight enters the window at a changing angle, so the bright patch slides across the floor.",
+  "lead_character": "Dage",
+  "supporting_characters": ["Dixon", "Purrcilla"],
+  "discovery_prop": "PROP_Sunbeam",
+  "discovery_collection": "SET_SunbeamStudy",
+  "runtime_policy": "short",
+  "runtime_seconds": 88,
+  "fps": 24,
+  "shotlist": "episode04_shotlist.csv",
+  "sprite_manifest": "references/mascot_sprites/current_sprite_manifest.json"
+}

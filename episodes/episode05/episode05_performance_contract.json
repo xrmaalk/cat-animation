@@ -1,0 +1,41 @@
+{
+  "version": "EP05_role_aware_performance_v1",
+  "purpose": "Keep lead and supporting sprite movement appropriate to story function without modifying Episode 4.",
+  "rules": {
+    "lead_character": "Dixon",
+    "allowed_roles": ["LEAD_ACTION", "LEAD_FOCUS", "SUPPORT_ACTION", "SUPPORT_REACTION", "BACKGROUND", "SHARED"],
+    "background_actions": ["IDLE"],
+    "shared_actions": ["SHARED_IDLE"],
+    "support_energy_must_not_exceed_lead": true,
+    "require_multiframe_sequences": true
+  },
+  "characters": {
+    "Dixon": {
+      "IDLE": {"frames": [0, 1, 2], "energy": 0, "roles": ["BACKGROUND"]},
+      "NOTICE": {"frames": [3, 4, 5, 6], "energy": 1, "roles": ["LEAD_FOCUS"]},
+      "BREATH_TEST": {"frames": [7, 8, 9, 10, 11, 12, 13], "energy": 2, "roles": ["LEAD_ACTION"]},
+      "TRACE": {"frames": [14, 15, 16, 17, 18, 19, 20], "energy": 2, "roles": ["LEAD_ACTION"]},
+      "COMPARE": {"frames": [42, 43, 44, 45, 46, 47, 48], "energy": 1, "roles": ["LEAD_ACTION", "LEAD_FOCUS"]},
+      "REPORT": {"frames": [0, 1, 2, 3, 4, 5, 6], "energy": 1, "roles": ["LEAD_ACTION", "LEAD_FOCUS"]},
+      "CELEBRATE": {"frames": [35, 36, 37, 38, 39, 40, 41], "energy": 2, "roles": ["LEAD_ACTION"]},
+      "SHARED_IDLE": {"frames": [0, 1, 2], "energy": 0, "roles": ["SHARED"]}
+    },
+    "Cila": {
+      "IDLE": {"frames": [0, 1, 2], "energy": 0, "roles": ["BACKGROUND"]},
+      "CURIOUS": {"frames": [3, 4, 5, 6], "energy": 1, "roles": ["SUPPORT_REACTION"]},
+      "APPROACH": {"frames": [14, 15, 16, 17, 18, 19, 20], "energy": 1, "roles": ["SUPPORT_ACTION"]},
+      "INVESTIGATE": {"frames": [28, 29, 30, 31, 32, 33, 34], "energy": 1, "roles": ["SUPPORT_ACTION", "SUPPORT_REACTION"]},
+      "WARM_CLOTH": {"frames": [28, 29, 30, 31, 32, 33, 34], "energy": 2, "roles": ["SUPPORT_ACTION"]},
+      "SHARED_IDLE": {"frames": [0, 1, 2], "energy": 0, "roles": ["SHARED"]}
+    },
+    "Dage": {
+      "IDLE": {"frames": [0, 1, 2, 3, 4, 5, 6], "energy": 0, "roles": ["BACKGROUND"]},
+      "CURIOUS": {"frames": [64, 65, 66, 67, 68, 69], "energy": 1, "roles": ["SUPPORT_REACTION"]},
+      "LOOK_UP": {"frames": [72, 73, 74, 75], "energy": 1, "roles": ["SUPPORT_ACTION"]},
+      "WORKING": {"frames": [56, 57, 58, 59, 60, 61], "energy": 2, "roles": ["SUPPORT_ACTION"]},
+      "REVIEW": {"frames": [64, 65, 66, 67, 68, 69], "energy": 1, "roles": ["SUPPORT_REACTION"]},
+      "WAVE": {"frames": [24, 25, 26, 27], "energy": 1, "roles": ["SUPPORT_REACTION"]},
+      "SHARED_IDLE": {"frames": [0, 1, 2, 3, 4, 5, 6], "energy": 0, "roles": ["SHARED"]}
+    }
+  }
+}

@@ -4,21 +4,6 @@ This Blender 5.x project is a reusable production scaffold for short educational
 
 Purrcilla is named **Cila** in Blender objects and sprite data. Dixon and Dage keep their names throughout.
 
-## Current project files
-
-| File | Role |
-| --- | --- |
-| `Purrcilla_Dixon_Dage_Curious_Together_TEMPLATE.blend` | Reusable 17-minute Episode 01 master scene, home, cameras, proxy cats, and editorial structure. |
-| `Purrcilla_Dixon_Dage_Animated_Short.blend` | 12-second Episode 01 proof of concept using the proxy characters. |
-| `Purrcilla_Dixon_Dage_Animated_Short_Mascot_Sprites.blend` | 12-second short using the new multi-frame mascot atlases, with keyed poses on camera-facing sprites. |
-| `Purrcilla_Dixon_Dage_EP02_Cardboard_Box.blend` | Separate 17-minute Episode 02 test animatic with frame-driven sprites and an animated box prop. |
-| `archive/episode03/` | Retired four-minute Episode 3 scene, video, previews, editorial data, and scripts; recoverable but not active. |
-| `preview_frames/episode02_box/EP02_storyboard_preview.png` | Contact sheet of Episode 02 story beats and the optional fact label. |
-
-The Episode 01 and Episode 02 timelines each contain 26 modular shots at 24 fps. Their 17-minute duration is an editorial plan with key actions and holds, rather than 17 minutes of continuous finished animation. The separate 12-second short can be rendered to a playable MP4 using the workflow below.
-
-For new episodes, target about 90 seconds and choose the exact length from the script within 60–120 seconds. Do not pad a short story with static holds. `pipeline/episode_plan.py` validates this policy while grandfathering the older 17-minute editorial plans and the archived four-minute Episode 3. A replacement Episode 3 should set `"runtime_policy": "short"` in its seed.
-
 ## Project layout
 
 - `pipeline/` holds Blender/Python entry points and shared timing validation.
@@ -88,6 +73,18 @@ blender --background Purrcilla_Dixon_Dage_Curious_Together_TEMPLATE.blend --pyth
 blender --background Purrcilla_Dixon_Dage_EP02_Cardboard_Box.blend --python pipeline/render_episode02_preview.py
 python pipeline/make_episode02_contact_sheet.py
 blender --background Purrcilla_Dixon_Dage_EP02_Cardboard_Box.blend --python pipeline/verify_episode02.py
+
+powershell - Set Location - Render Episode Frames & Verify
+Set-Location 'D:\Projects\Python\Purrcilla-Dixon-Dage-Blender'
+
+& 'C:\Program Files\Blender Foundation\Blender 5.2\blender.exe' `
+  --background 'Purrcilla_Dixon_Dage_EP04_Sunbeam.blend' `
+  --python 'pipeline/render_episode04_video.py' -- --overwrite
+
+
+& 'C:\Program Files\Blender Foundation\Blender 5.2\blender.exe' `
+  --background 'Purrcilla_Dixon_Dage_EP04_Sunbeam.blend' `
+  --python 'pipeline/verify_episode04.py'
 ```
 
 The builder writes a separate `.blend` and refuses to replace an existing Episode 02 output unless you pass `-- --overwrite`. The preview commands write stills and a contact sheet under `preview_frames/episode02_box/`; they do not encode a 17-minute video. The verifier writes `episodes/episode02/EP02_VERIFICATION.json`. The current audit passes the Dage marking checks; it reports five missing JPG reference files under `references/` as a separate asset issue. The packed mascot atlases remain available for rendering. See `episodes/episode02/EP02_IMPLEMENTATION.md` for frame mappings and rebuild details and `episodes/episode02/EP02_VERIFICATION.md` for checks and known limits. The source art has a few colored edge specks, and flat sprite planes only approximate paw contact with the box.
@@ -95,6 +92,10 @@ The builder writes a separate `.blend` and refuses to replace an existing Episod
 For another episode, reuse the template, source sheets or prepared atlases, and the shot timing pattern. Copy the seed, shot list, and episode builder, then change the discovery prop, cause-and-effect action, cameras, fact, and per-shot sprite poses. `SWAP_EPISODE_SEED.md` is the episode planning guide.
 
 The old Episode 3 guide and its verified 4:00 MP4 are retained only in [the archive](archive/episode03/README.md). A replacement Episode 3 should use the approved Dage sheet and the new pacing policy.
+
+Episode 04, **“Dage Discovers Why the Sunbeam Moves,”** is the first active short-format episode under that policy. Its 18 shots run 88 seconds, Dage is the lead, and Dixon and Purrcilla support his marker-and-shadow experiment. The build, preview, continuous-video, and verification commands are documented in `episodes/episode04/EP04_CREATION_AND_RENDER_GUIDE.md`.
+
+Episode 05, **“Dixon Discovers Why the Window Turns Cloudy,”** runs 86 seconds across 17 planned shots. Its Episode 5-only performance contract assigns an action and role to every character and supplies multi-frame sequences for Dixon, Purrcilla, and Dage without changing Episode 4. The scene has passed pre-render structural verification; rendering remains a separate later approval gate documented in `episodes/episode05/EP05_PRE_RENDER_GUIDE.md`.
 
 The supplied photos guide character identity; the mascot sheets are stylized artwork for the current 2.5D passes.
 

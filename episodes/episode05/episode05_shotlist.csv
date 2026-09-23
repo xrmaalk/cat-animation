@@ -1,0 +1,18 @@
+shot,beat,start_seconds,duration_seconds,camera,description,dage_action,dixon_action,cila_action,dage_role,dixon_role,cila_role
+S01,COLD_WINDOW_HOOK,0,5,CAM_WindowReport,"Dixon leans close to the clear cool window and his breath touches the glass",IDLE,BREATH_TEST,IDLE,BACKGROUND,LEAD_ACTION,BACKGROUND
+S02,TITLE,5,4,CAM_CatEye_A,"Dixon Discovers Why the Window Turns Cloudy",IDLE,IDLE,IDLE,BACKGROUND,BACKGROUND,BACKGROUND
+S03,DIXON_NOTICES_MIST,9,5,CAM_HeroPortrait_Dixon,"A cloudy patch appears exactly where Dixon breathed",IDLE,NOTICE,IDLE,BACKGROUND,LEAD_FOCUS,BACKGROUND
+S04,DIXON_TESTS_BREATH,14,6,CAM_WindowReport,"Dixon tries one careful second breath and watches the fog spread",IDLE,BREATH_TEST,IDLE,BACKGROUND,LEAD_ACTION,BACKGROUND
+S05,PAW_TRACE,20,5,CAM_Insert_Paws,"Dixon draws one clear line through the mist with a white mitten",IDLE,TRACE,IDLE,BACKGROUND,LEAD_ACTION,BACKGROUND
+S06,MIST_RETURNS,25,5,CAM_Insert_Eyes,"Tiny droplets gather around the clear paw line",CURIOUS,NOTICE,CURIOUS,SUPPORT_REACTION,LEAD_FOCUS,SUPPORT_REACTION
+S07,PURRCILLA_CHECKS_OUTSIDE,30,5,CAM_CatEye_A,"Purrcilla checks the far side of the pane and finds it clear",CURIOUS,COMPARE,APPROACH,SUPPORT_REACTION,LEAD_FOCUS,SUPPORT_ACTION
+S08,DAGE_CHECKS_ROOM_AIR,35,6,CAM_PorchWide,"Dage looks from the warm room air to the cool window",LOOK_UP,COMPARE,CURIOUS,SUPPORT_ACTION,LEAD_FOCUS,SUPPORT_REACTION
+S09,DIXON_COMPARES_SIDES,41,5,CAM_WindowReport,"Dixon compares the dry outside surface with the misty room side",REVIEW,COMPARE,INVESTIGATE,SUPPORT_REACTION,LEAD_ACTION,SUPPORT_REACTION
+S10,WARM_CLOTH_TEST,46,5,CAM_Insert_Paws,"Purrcilla warms a small corner with a cloth; that corner fogs less",CURIOUS,REPORT,WARM_CLOTH,SUPPORT_REACTION,LEAD_FOCUS,SUPPORT_ACTION
+S11,COLD_COASTER_TEST,51,5,CAM_CatEye_A,"Dage holds a cool coaster nearby and a faint mist forms on it too",WORKING,COMPARE,CURIOUS,SUPPORT_ACTION,LEAD_FOCUS,SUPPORT_REACTION
+S12,DIXON_SEES_DROPLETS,56,5,CAM_Insert_Eyes,"Dixon notices that the cloud is made of many tiny droplets",REVIEW,NOTICE,INVESTIGATE,SUPPORT_REACTION,LEAD_FOCUS,SUPPORT_REACTION
+S13,DIXON_EXPLAINS_PATTERN,61,6,CAM_WindowReport,"Dixon connects warm moist breath, a cool surface, and the droplets",CURIOUS,REPORT,CURIOUS,SUPPORT_REACTION,LEAD_ACTION,SUPPORT_REACTION
+S14,FACT_LABEL,67,5,CAM_CatEye_A,"Cool glass turns water vapor into tiny droplets",REVIEW,COMPARE,CURIOUS,SUPPORT_REACTION,LEAD_FOCUS,SUPPORT_REACTION
+S15,DIXON_SOLVES_IT,72,5,CAM_HeroPortrait_Dixon,"Dixon celebrates when the warm corner stays clearer",WAVE,CELEBRATE,CURIOUS,SUPPORT_REACTION,LEAD_ACTION,SUPPORT_REACTION
+S16,SHARED_CLEARING,77,5,CAM_PorchWide,"All three quietly clear a small viewing patch together",WORKING,TRACE,INVESTIGATE,SUPPORT_ACTION,LEAD_ACTION,SUPPORT_ACTION
+S17,QUIET_BUTTON,82,4,CAM_WindowReport,"A new breath cloud blooms beside their clear patch and Dixon knowingly smiles",SHARED_IDLE,SHARED_IDLE,SHARED_IDLE,SHARED,SHARED,SHARED

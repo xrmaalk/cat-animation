@@ -1,0 +1,15 @@
+{
+  "episode": 5,
+  "title": "Dixon Discovers Why the Window Turns Cloudy",
+  "runtime_seconds": 86,
+  "shot_count": 17,
+  "contract_version": "EP05_role_aware_performance_v1",
+  "checks": {
+    "runtime_is_short": true,
+    "no_pacing_flags": true,
+    "current_sprite_manifest": true,
+    "lead_is_dixon": true,
+    "role_action_pairs_valid": true
+  },
+  "errors": []
+}

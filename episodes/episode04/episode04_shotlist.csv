@@ -1,0 +1,19 @@
+shot,beat,start_seconds,duration_seconds,camera,description,dage_action,dixon_action,cila_action
+S01,COLD_OPEN,0,5,CAM_Insert_Paws,"A narrow sunbeam reaches Dage's paws, then begins sliding away",WAITING,IDLE,IDLE
+S02,TITLE,5,4,CAM_CatEye_A,"Dage Discovers Why the Sunbeam Moves",IDLE,IDLE,IDLE
+S03,DAGE_FINDS_WARM_SPOT,9,5,CAM_HeroPortrait_Dage,"Dage settles into the bright warm patch",WAITING,IDLE,IDLE
+S04,SUNBEAM_SLIPS,14,5,CAM_Insert_Paws,"The bright edge leaves his paws while he stays still",LOOK_RIGHT,IDLE,IDLE
+S05,DAGE_FOLLOWS,19,5,CAM_CatEye_A,"Dage follows the light instead of waiting for it",JUMP,IDLE,IDLE
+S06,FIRST_MARKER,24,5,CAM_Insert_Paws,"Dage places a purple marker at the beam's first position",WORKING,IDLE,IDLE
+S07,DIXON_CHECKS_WINDOW,29,5,CAM_WindowReport,"Dixon checks the window and the incoming light",LOOK_UP,WINDOW_REPORT,IDLE
+S08,PURRCILLA_BRINGS_MARKER,34,5,CAM_CatEye_A,"Purrcilla brings a second marker for Dage's test",CURIOUS,OBSERVE,APPROACH
+S09,SECOND_MARKER,39,5,CAM_Insert_Paws,"Dage marks the beam's new position farther across the floor",WORKING,OBSERVE,INVESTIGATE
+S10,TIME_PASSES,44,6,CAM_PorchWide,"A quick visual passage of time carries the beam toward a third spot",WAITING,OBSERVE,INVESTIGATE
+S11,DAGE_COMPARES,50,5,CAM_HeroPortrait_Dage,"Dage compares the marker trail and sees a steady direction",REVIEW,OBSERVE,CURIOUS
+S12,DAGE_LOOKS_UP,55,4,CAM_Insert_Eyes,"He traces the light back toward the window and sky",LOOK_UP,WINDOW_REPORT,CURIOUS
+S13,DIXON_SHOWS_ANGLE,59,5,CAM_WindowReport,"Dixon uses the window edge to show the changing light angle",CURIOUS,WINDOW_REPORT,INVESTIGATE
+S14,PURRCILLA_TESTS_SHADOW,64,5,CAM_Insert_Paws,"Purrcilla crosses the beam and her shadow moves with her",LOOK_DOWN,OBSERVE,INVESTIGATE
+S15,FACT_LABEL,69,5,CAM_CatEye_A,"The moving patch is sunlight arriving from a changing angle",REVIEW,OBSERVE,CURIOUS
+S16,DAGE_SOLVES_IT,74,5,CAM_HeroPortrait_Dage,"Dage recognizes the pattern and celebrates the solution",WAVE,CURIOUS,CURIOUS
+S17,SHARED_SUNBEAM,79,5,CAM_PorchWide,"All three settle together in the beam's newest position",SHARED_IDLE,SHARED_IDLE,SHARED_IDLE
+S18,SUNSET_BUTTON,84,4,CAM_CatEye_A,"The sunbeam slips onward; Dage calmly scoots after it",LOOK_RIGHT,SHARED_IDLE,SHARED_IDLE
