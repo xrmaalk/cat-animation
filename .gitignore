@@ -2,3 +2,5 @@ __pycache__
 .cat-env
 .env*
 renders
+tmp/
+*.blend1

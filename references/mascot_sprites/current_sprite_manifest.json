@@ -1,0 +1,45 @@
+{
+  "base_manifest": "references/mascot_sprites/episode02_atlases/episode02_sprite_manifest.json",
+  "note": "Current production artwork. New episodes use this manifest; completed Episodes 2 and 3 retain their historical atlas.",
+  "dage_front_neck_patch": "Dage_author_approved_8x11_front_neck_art",
+  "dage_visual_references": [
+    "references/mascot_sprites/Dage_SpriteSheet.png",
+    "references/mascot_sprites/Dage_Mascot_Idle.png",
+    "references/mascot_sprites/Dage_SpriteSheet.png"
+  ],
+  "characters": {
+    "Dage": {
+      "source": "references/mascot_sprites/Dage_SpriteSheet.png",
+      "source_sha256": "a2b6b33a762cc92e26b8f8ad1873f8e3af0a74746e13e711f52b0c55eac45e2a",
+      "source_size": [1536, 2288],
+      "source_alpha_range": [0, 255],
+      "source_grid": { "columns": 8, "rows": 11, "frames": 88 },
+      "atlas": "references/mascot_sprites/Dage_SpriteSheet.png",
+      "atlas_size": [1536, 2288],
+      "atlas_format": "WEBP",
+      "atlas_grid": {
+        "columns": 8,
+        "rows": 11,
+        "cell_width": 192,
+        "cell_height": 208
+      },
+      "valid_frames": 88,
+      "row_frame_counts": [7, 8, 8, 4, 5, 8, 6, 6, 6, 8, 8],
+      "foot_pixel_range": [181, 203],
+      "frame_map": {
+        "idle": 0,
+        "curious": 64,
+        "shared_idle": 0,
+        "wave": 25,
+        "jump": 34,
+        "waiting": 48,
+        "working": 56,
+        "review": 64,
+        "look_up": 72,
+        "look_right": 76,
+        "look_down": 80,
+        "look_left": 84
+      }
+    }
+  }
+}

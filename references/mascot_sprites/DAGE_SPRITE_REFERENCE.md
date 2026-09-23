@@ -1,9 +1,9 @@
 # Dage sprite marking reference
 
-The authoritative Dage visual references are:
+The current Dage source of truth is `Dage_SpriteSheet.png` (8×11, 192×208 cells). The other images are supporting visual references:
 
-- `Dage_Mascot_Idle.png` — primary close reference for coat placement, ruff shape, face, clothing, and tail.
-- `Dage_SpriteSheet.png` — pose reference showing how the same identity reads across movement and expressions.
+- `Dage_Mascot_Idle.png` — close reference for coat placement, ruff shape, face, clothing, and tail.
+- `Dage_Sprite_Sheet.jpg` — earlier pose reference.
 
 ![Dage idle reference](Dage_Mascot_Idle.png)
 
@@ -19,4 +19,4 @@ Dage's irregular black fur patch is on the **front of his neck within the white 
 - Do not draw it as a chin spot, beard, bowtie, collar ornament, or floating shader overlay.
 - Preserve a natural, uneven fur edge rather than a geometric shape.
 
-Use these two images as visual authority for all new Dage sprites, pose selection, atlas updates, 2D animation, and 3D look development. The transparent production atlas may be used for rendering, but new or revised artwork must be checked against these references before it is approved.
+Use the approved 8×11 sheet for new Dage pose selection, 2D animation, and rendering. Check new or revised artwork against it and the supporting references. The historical 7×10 atlas is retained only to reproduce completed scenes.
