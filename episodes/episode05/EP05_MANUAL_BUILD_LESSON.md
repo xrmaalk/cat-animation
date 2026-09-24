@@ -58,11 +58,11 @@ builder script.
 
 In the Timeline, add and rename these markers:
 
-| Marker | Frame | Meaning |
-| --- | ---: | --- |
-| `S01_COLD_WINDOW_HOOK` | 0 | Dixon breathes on the cool glass |
-| `S02_TITLE` | 120 | Title beat begins at 5 seconds |
-| `S03_DIXON_NOTICES_MIST` | 216 | Dixon notices the cloudy patch at 9 seconds |
+| Marker                   | Frame | Meaning                                     |
+|--------------------------|------:|---------------------------------------------|
+| `S01_COLD_WINDOW_HOOK`   |     0 | Dixon breathes on the cool glass            |
+| `S02_TITLE`              |   120 | Title beat begins at 5 seconds              |
+| `S03_DIXON_NOTICES_MIST` |   216 | Dixon notices the cloudy patch at 9 seconds |
 
 Use the rule `frame = seconds x 24` for a marker that begins at a whole
 second. Do not add the other fourteen markers until these three are correct.
@@ -73,15 +73,15 @@ Skill learned: translating a shot list into editorial timing.
 
 The template cameras retain long Episode 1 actions. In the manual learning copy,
 select each camera before reusing it, press **F3**, run **Remove Animation**, and
-confirm that only that camera is selected. Otherwise the inherited action will
+confirm that only that camera is selected. Otherwise, the inherited action will
 move the camera during Episode 5 playback and can place it inside the set.
 
 Use the existing cameras in the `CAMERAS` collection:
 
-| Marker | Camera |
-| --- | --- |
-| `S01_COLD_WINDOW_HOOK` | `CAM_WindowReport` |
-| `S02_TITLE` | `CAM_CatEye_A` |
+| Marker                   | Camera                   |
+|--------------------------|--------------------------|
+| `S01_COLD_WINDOW_HOOK`   | `CAM_WindowReport`       |
+| `S02_TITLE`              | `CAM_CatEye_A`           |
 | `S03_DIXON_NOTICES_MIST` | `CAM_HeroPortrait_Dixon` |
 
 At each marker, select the camera, hover over the Timeline, and use
