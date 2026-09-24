@@ -1,6 +1,5 @@
 """Render representative Episode 05 review frames from the continuous scene."""
 
-from pipeline.episode_plan import load_episode_plan
 from pathlib import Path
 import sys
 
@@ -10,7 +9,8 @@ import bpy
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
-# pyproject: noqa: I001
+
+from pipeline.episode_plan import load_episode_plan
 
 SEED, SHOTS = load_episode_plan(5, ROOT)
 SHOT_BY_BEAT = {shot["beat"]: shot for shot in SHOTS}
@@ -41,14 +41,14 @@ def frame_for(beat, fraction=0.55):
 
 
 frames = [
-    ("dage_finds_sunbeam", "DAGE_FINDS_WARM_SPOT"),
-    ("sunbeam_slips", "SUNBEAM_SLIPS"),
-    ("dage_first_marker", "FIRST_MARKER"),
+    ("dixon_finds_condensation", "DIXON_FINDS_WINDOW_CONDENSATION"),
+    ("condensation_drips", "CONDENSATION_DRIPS"),
+    ("dixon_first_marker", "FIRST_MARKER"),
     ("dixon_checks_window", "DIXON_CHECKS_WINDOW"),
     ("purrcilla_brings_marker", "PURRCILLA_BRINGS_MARKER"),
     ("dage_compares", "DAGE_COMPARES"),
-    ("purrcilla_shadow_test", "PURRCILLA_TESTS_SHADOW"),
-    ("shared_sunbeam", "SHARED_SUNBEAM"),
+    ("purrcilla_window_test", "PURRCILLA_TESTS_WINDOW"),
+    ("shared_DRIP", "SHARED_DRIP"),
 ]
 for label, beat in frames:
     if only and label not in only:

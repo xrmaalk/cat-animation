@@ -38,12 +38,12 @@ if str(ROOT) not in sys.path:
 from pipeline.episode_plan import load_episode_plan
 
 
-SEED, SHOTS = load_episode_plan(4, ROOT)
+SEED, SHOTS = load_episode_plan(5, ROOT)
 scene = bpy.context.scene
-if scene.name != "EP04_Sunbeam" or scene.get("episode_number") != 4:
-    raise RuntimeError("Open the built Episode 04 scene before rendering")
+if scene.name != "EP05_Condensation" or scene.get("episode_number") != 5:
+    raise RuntimeError("Open the built Episode 05 scene before rendering")
 if scene.render.fps != int(SEED["fps"]):
-    raise RuntimeError("Episode 04 FPS does not match the seed")
+    raise RuntimeError("Episode 05 FPS does not match the seed")
 
 step = max(1, int(argument("--step", "2")))
 source_fps = int(SEED["fps"])
@@ -53,10 +53,10 @@ source_end_exclusive = runtime * source_fps
 output_dir = ROOT / "renders"
 output_dir.mkdir(exist_ok=True)
 signature = sha256(Path(bpy.data.filepath).read_bytes()).hexdigest()[:12]
-frames_dir = output_dir / f"episode04_continuous_frames_{signature}_step{step}"
+frames_dir = output_dir / f"episode05_continuous_frames_{signature}_step{step}"
 frames_dir.mkdir(exist_ok=True)
-destination = output_dir / "Purrcilla_Dixon_Dage_EP04_Sunbeam_Animatic.mp4"
-temporary = output_dir / "Purrcilla_Dixon_Dage_EP04_Sunbeam_Animatic.part.mp4"
+destination = output_dir / "Purrcilla_Dixon_Dage_EP05_Condensation_Animatic.mp4"
+temporary = output_dir / "Purrcilla_Dixon_Dage_EP05_Condensation_Animatic.part.mp4"
 if destination.exists() and "--overwrite" not in sys.argv:
     raise FileExistsError(f"Output exists: {destination}; pass -- --overwrite")
 
@@ -70,10 +70,10 @@ scene.render.image_settings.file_format = "PNG"
 scene.render.image_settings.color_mode = "RGB"
 
 text_group = bpy.data.collections["NARRATION_TEXT_OFF"]
-title = bpy.data.objects["EP04_TITLE_CARD"]
-fact = bpy.data.objects["EP04_FACT_LABEL"]
-narration = bpy.data.objects["EP04_OPTIONAL_NARRATION"]
-backdrop = bpy.data.objects["EP04_TEXT_BACKDROP"]
+title = bpy.data.objects["EP05_TITLE_CARD"]
+fact = bpy.data.objects["EP05_FACT_LABEL"]
+narration = bpy.data.objects["EP05_OPTIONAL_NARRATION"]
+backdrop = bpy.data.objects["EP05_TEXT_BACKDROP"]
 
 
 def shot_at(frame):
@@ -109,13 +109,13 @@ for index, frame in enumerate(source_frames):
         bpy.ops.render.render(write_still=True)
     if index % max(1, round(sample_fps * 5)) == 0:
         print(
-            "EP04_CONTINUOUS_PROGRESS", index, "of", len(source_frames),
+            "EP05_CONTINUOUS_PROGRESS", index, "of", len(source_frames),
             "source_frame", frame, scene.camera.name, flush=True,
         )
     frame_paths.append(frame_path)
 
 configure_text("")
-concat_path = frames_dir / "episode04_continuous.ffconcat"
+concat_path = frames_dir / "episode05_continuous.ffconcat"
 duration = 1.0 / sample_fps
 lines = ["ffconcat version 1.0"]
 for frame_path in frame_paths:
@@ -136,6 +136,6 @@ command = [
 ]
 subprocess.run(command, check=True)
 if not temporary.is_file() or temporary.stat().st_size < 1024:
-    raise RuntimeError("FFmpeg did not produce a complete Episode 04 MP4")
+    raise RuntimeError("FFmpeg did not produce a complete Episode 05 MP4")
 temporary.replace(destination)
-print("EP04_ANIMATIC_SAVED", destination, destination.stat().st_size, flush=True)
+print("EP05_ANIMATIC_SAVED", destination, destination.stat().st_size, flush=True)

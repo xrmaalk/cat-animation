@@ -1,6 +1,11 @@
-# Episode 5 pre-render guide
+# Episode 5 automated pre-render guide
 
 Episode 5 is an 86-second Dixon-led condensation story. This guide deliberately stops before preview or video rendering.
+
+This is the automated production/reference path, not a Blender teaching path.
+To learn how to construct the episode manually before starting Episode 6, use
+`EP05_MANUAL_BUILD_LESSON.md`. The automated scene is an answer key and must not
+replace the hands-on checkpoints in that lesson.
 
 ## Seed and performance plan
 
